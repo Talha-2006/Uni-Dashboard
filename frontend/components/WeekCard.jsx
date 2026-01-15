@@ -5,18 +5,22 @@ function WeekCard({ days }) {
     return (
         <div style={{
             display: 'flex',
-            backgroundColor: '#1a1a1a',
-            border: '1px solid #333',
-            borderRadius: '12px',
+            backgroundColor: '#132046',
+            border: '1px solid rgba(47, 128, 237, 0.2)',
+            borderRadius: '16px',
             overflow: 'hidden',
-            fontFamily: 'system-ui, -apple-system, sans-serif'
+            fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+            maxWidth: '1350px',
+            width: '100%',
+            boxShadow: '0 4px 24px rgba(0, 0, 0, 0.25)',
+            gap: '1px'
         }}>
             {weekDays.map((day, index) => (
                 <div
                     key={index}
                     style={{
                         flex: '1',
-                        borderRight: index < weekDays.length - 1 ? '1px solid #333' : 'none',
+                        borderRight: index < weekDays.length - 1 ? '1px solid rgba(255, 255, 255, 0.05)' : 'none',
                         minWidth: '0',
                         display: 'flex',
                         flexDirection: 'column'

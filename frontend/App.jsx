@@ -23,14 +23,25 @@ function App() {
         {
             date: "18",
             tasks: [
-                { name: "Problem Set 0", class: "CSC263", status: "To-Do", type: "Assignment", note: "Due at 5pm" }
+                { name: "Problem Set 0", class: "CSC263", status: "In-Progress", type: "Assignment", note: "Due at 5pm" }
             ]
         }
     ];
 
     return (
-        <div style={{ padding: '20px', backgroundColor: '#121212', minHeight: '100vh' }}>
-            <h1 style={{ color: '#fff', marginBottom: '20px' }}>Welcome to Uni-Dashboard</h1>
+        <div style={{ 
+            padding: '20px', 
+            backgroundColor: '#0A1128', 
+            minHeight: '100vh',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+        }}>
+            <HeaderCard greeting="Morning" name="Talha" />
+            <WeekHeader month="January" year="2026" />
             <WeekCard days={weekData} />
         </div>
     );
