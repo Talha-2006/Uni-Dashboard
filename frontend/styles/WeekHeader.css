@@ -1,0 +1,73 @@
+.week-header {
+    max-width: 1350px;
+    width: 100%;
+    margin-bottom: 4px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.week-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.week-header-title {
+    color: #AEC5EB;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+}
+
+.week-header-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.week-header-button {
+    background-color: #132046;
+    border: 1px solid rgba(47, 128, 237, 0.3);
+    border-radius: 8px;
+    color: #FFFFFF;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    transition: all 0.2s;
+}
+
+.week-header-button:hover {
+    background-color: #2F80ED;
+    border-color: #2F80ED;
+}
+
+.week-header-button-today {
+    background-color: transparent;
+    border: 1px solid rgba(47, 128, 237, 0.5);
+    color: #AEC5EB;
+    padding: 8px 16px;
+}
+
+.week-header-button-today:hover {
+    background-color: rgba(47, 128, 237, 0.15);
+    border-color: #2F80ED;
+    color: #FFFFFF;
+}
+
+.week-header-days {
+    display: flex;
+}
+
+.week-header-day {
+    flex: 1;
+    padding: 12px;
+    text-align: center;
+    color: #D1E5FF;
+    font-size: 14px;
+    font-weight: 600;
+}

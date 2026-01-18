@@ -1,7 +1,10 @@
 const { useState } = React;
 
 function App() {
-    const weekData = [
+    const [currentPage, setCurrentPage] = useState('dashboard');
+    const [selectedDate, setSelectedDate] = useState(null);
+    const [editingTask, setEditingTask] = useState(null); // { task, date, taskIndex }
+    const [weekData, setWeekData] = useState([
         {
             date: "12",
             tasks: [
@@ -26,23 +29,108 @@ function App() {
                 { name: "Problem Set 0", class: "CSC263", status: "In-Progress", type: "Assignment", note: "Due at 5pm" }
             ]
         }
-    ];
+    ]);
+
+    const handleCreateTask = (taskData) => {
+        // If editing a task, update it; otherwise create a new one
+        if (editingTask) {
+            // Update existing task
+            setWeekData(prevData => {
+                return prevData.map(day => {
+                    if (day.date === editingTask.date) {
+                        const updatedTasks = [...day.tasks];
+                        updatedTasks[editingTask.taskIndex] = {
+                            name: taskData.name,
+                            class: taskData.class,
+                            status: taskData.status,
+                            type: taskData.type,
+                            note: taskData.note || ''
+                        };
+                        return {
+                            ...day,
+                            tasks: updatedTasks
+                        };
+                    }
+                    return day;
+                });
+            });
+            setEditingTask(null);
+        } else {
+            // Create new task
+            // Find the day to add the task to based on date
+            // Use selectedDate if available, otherwise try to extract from taskData.date
+            let taskDate = selectedDate;
+            
+            if (!taskDate && taskData.date) {
+                const dateObj = new Date(taskData.date);
+                taskDate = dateObj.getDate().toString();
+            }
+            
+            if (taskDate) {
+                setWeekData(prevData => {
+                    const updatedData = prevData.map(day => {
+                        if (day.date === taskDate) {
+                            return {
+                                ...day,
+                                tasks: [...day.tasks, {
+                                    name: taskData.name,
+                                    class: taskData.class,
+                                    status: taskData.status,
+                                    type: taskData.type,
+                                    note: taskData.note || ''
+                                }]
+                            };
+                        }
+                        return day;
+                    });
+                    return updatedData;
+                });
+            }
+        }
+    };
+
+    const handleNavigateToCreate = (date) => {
+        setSelectedDate(date);
+        setCurrentPage('create');
+    };
+
+    const handleNavigateToDashboard = () => {
+        setCurrentPage('dashboard');
+        setSelectedDate(null);
+        setEditingTask(null);
+    };
+
+    const handleAddTask = (date) => {
+        setEditingTask(null);
+        handleNavigateToCreate(date);
+    };
+
+    const handleTaskClick = (taskData, date, taskIndex) => {
+        setEditingTask({
+            task: taskData,
+            date: date,
+            taskIndex: taskIndex
+        });
+        setSelectedDate(date);
+        setCurrentPage('create');
+    };
+
+    if (currentPage === 'create') {
+        return (
+            <CreateTask 
+                onBack={handleNavigateToDashboard}
+                onSubmit={handleCreateTask}
+                initialDate={selectedDate}
+                initialTask={editingTask?.task}
+            />
+        );
+    }
 
     return (
-        <div style={{ 
-            padding: '20px', 
-            backgroundColor: '#0A1128', 
-            minHeight: '100vh',
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
-        }}>
+        <div className="app-container">
             <HeaderCard greeting="Morning" name="Talha" />
             <WeekHeader month="January" year="2026" />
-            <WeekCard days={weekData} />
+            <WeekCard days={weekData} onAddTask={handleAddTask} onTaskClick={handleTaskClick} />
         </div>
     );
 }

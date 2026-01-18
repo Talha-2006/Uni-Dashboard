@@ -1,0 +1,67 @@
+.day-card {
+    background-color: transparent;
+    border-top: none;
+    padding: 16px;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    position: relative;
+    min-height: 200px;
+    transition: background-color 0.2s;
+}
+
+.day-card.has-dark-background {
+    background-color: rgba(19, 32, 70, 0.5);
+}
+
+.day-card.is-today {
+    border-top: 3px solid #2F80ED;
+}
+
+.day-card-date {
+    font-size: 18px;
+    font-weight: 600;
+    color: #AEC5EB;
+    margin-bottom: 12px;
+}
+
+.day-card-tasks {
+    flex: 1;
+}
+
+.day-card-add-button {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    opacity: 0;
+    transition: all 0.2s;
+    font-size: 24px;
+    color: rgba(174, 197, 235, 0.5);
+    font-weight: 300;
+    background-color: rgba(19, 32, 70, 0.6);
+    border: 1px solid rgba(47, 128, 237, 0.3);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    z-index: 10;
+}
+
+.day-card:hover .day-card-add-button {
+    opacity: 1;
+}
+
+.day-card-add-button:hover {
+    color: #2F80ED;
+    background-color: rgba(47, 128, 237, 0.2);
+    border-color: #2F80ED;
+}

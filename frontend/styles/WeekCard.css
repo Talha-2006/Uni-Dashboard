@@ -1,0 +1,23 @@
+.week-card {
+    display: flex;
+    background-color: #132046;
+    border: 1px solid rgba(47, 128, 237, 0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    max-width: 1350px;
+    width: 100%;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+    gap: 1px;
+}
+
+.week-card-day {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.week-card-day-border {
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
