@@ -4,11 +4,9 @@
 
 ![Banner](assets/Dashboard.png)
 
-[![Status](https://img.shields.io/badge/status-in%20development-amber?style=flat-square)](.)
+[![Status](https://img.shields.io/badge/Status-in%20development-amber?style=flat-square)](.)
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=white)](https://react.dev/)
 [![Node](https://img.shields.io/badge/Node.js-backend-339933?style=flat-square&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
-
-**This project is under active development.** Features and architecture may change; persistence and API layers are still being wired up.
 
 ---
 
@@ -51,7 +49,9 @@ Balancing multiple courses means juggling due dates, recurring check-ins, and di
 
    Alternatively, open `frontend/index.html` in a browser if your environment allows local script loading.
 
-### Backend (optional, for future DB work)
+**This project is under active development.** Features and architecture may change; persistence and API layers are still being wired up.
+
+### Backend
 
 1. Install [Node.js](https://nodejs.org/) and run `npm install pg` in the `backend` directory if you add a `package.json`, or install `pg` globally / locally as you prefer.
 2. Create a PostgreSQL database and **configure connection settings** in `backend/server.js` (or move credentials to environment variables before committing — never commit secrets).
@@ -77,12 +77,6 @@ backend/
 - Environment-based configuration and secure credential handling
 - Optional build tooling (Vite/Webpack) for production bundles
 - Auth and multi-user support
-
----
-
-## License
-
-Specify a license when you’re ready to publish (e.g. MIT). Until then, all rights reserved unless you state otherwise.
 
 ---
 
